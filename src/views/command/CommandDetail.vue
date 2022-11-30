@@ -34,9 +34,9 @@ const command = reactive({
 })
 
 const onSaveCommand = async () => {
-    const newCommand = await storeCommands.addCommand(command)
+    const newCommandResponse = await storeCommands.addCommand(command)
 
-    console.log('new command', newCommand)
+    console.log('new command', newCommandResponse)
 }
 
 </script>
