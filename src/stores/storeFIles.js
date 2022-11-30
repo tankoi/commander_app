@@ -1,15 +1,14 @@
 import { defineStore } from 'pinia'
 
-export const useCommandsStore = defineStore('storeCommands', {
+export const useFileStore = defineStore('storeCommands', {
     state: () => {
         return {
-            commands: []
         }
     },
     actions: {
-        async addCommand(command) {
+        async upload(file) {
             try {
-                return await axios.post('/commands', command)
+                return await axios.post('/file/upload', file)
             }
             catch (error) {
                 console.log('error', error)

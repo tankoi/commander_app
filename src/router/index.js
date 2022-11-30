@@ -1,18 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import CommandList from '@/views/CommandList.vue'
-import CommandDetail from '@/views/CommandDetail.vue'
+import commandRoutes from './commands'
+import userRoutes from './users'
 
-const routes = [{
-  path: '/',
-  name: 'commands',
-  component: CommandList
-},
-{
-    path: '/command/:id',
-    name: 'command',
-    component: CommandDetail,
-    props: true
-  }]
+const routes = commandRoutes
+  .concat(userRoutes)
 
 const router = createRouter({
   history: createWebHistory(),
