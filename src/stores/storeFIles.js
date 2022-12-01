@@ -8,7 +8,10 @@ export const useFileStore = defineStore('storeCommands', {
     actions: {
         async upload(file) {
             try {
-                return await axios.post('/file/upload', file)
+                const formData = new FormData();
+                formData.append('file', file);
+                const headers = { 'Content-Type': 'multipart/form-data' };
+                return await axios.post('/files/upload', formData, { headers })
             }
             catch (error) {
                 console.log('error', error)

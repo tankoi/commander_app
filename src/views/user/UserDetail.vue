@@ -3,12 +3,14 @@
         <h1>User detail</h1>
 
         <h3>Profile image</h3>
-        <input type="file" 
-            id="profileImage" 
-            name="profileImage" 
-            ref="file"
-            @change="onFileChanged" 
-        >
+        <input type="file" id="profileImage" name="profileImage" ref="file" @input="onFileChanged">
+
+        <div id="preview">
+            <img :src="url" />
+        </div>
+
+        <div class="imagePreviewWrapper" :style="{ 'background-image': `url(${url})` }">
+        </div>
 
         <div>
             <button @click="onUploadImage">Upload</button>
@@ -17,11 +19,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { nextTick, ref, reactive } from 'vue'
 import { useFileStore } from '@/stores/storeFiles'
 
-const file = ref(null)
-let uploadedFile = ref(null)
+const image = ref(null);
+const url = ref('')
 
 /*
     store
@@ -31,9 +33,14 @@ const storeFiles = useFileStore()
 /*
     events
 */
-const onFileChanged = () => {
-    uploadedFile = file.value.files[0];
+const onFileChanged = (e) => {
+    if (e.target && e.target.files.length > 0) {
+        image.value = e.target.files.item(0)
+        url.value = URL.createObjectURL(image.value)
+    }
 }
-const onUploadImage = () => {
+
+const onUploadImage = async () => {
+    await storeFiles.upload(image.value)
 }
 </script>
