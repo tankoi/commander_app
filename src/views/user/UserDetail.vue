@@ -9,9 +9,6 @@
             <img :src="url" />
         </div>
 
-        <div class="imagePreviewWrapper" :style="{ 'background-image': `url(${url})` }">
-        </div>
-
         <div>
             <button @click="onUploadImage">Upload</button>
         </div>
