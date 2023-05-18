@@ -12,6 +12,17 @@
         <div>
             <button @click="onUploadImage">Upload</button>
         </div>
+        <v-btn>Button</v-btn>
+        <v-row>
+            <v-col cols="6">
+                <v-combobox
+                    label="Combobox"
+                    :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
+                    variant="outlined"
+                ></v-combobox>
+            </v-col>
+        </v-row>
+        
     </div>
 </template>
 

@@ -6,8 +6,13 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
 
   </header>
-
-  <RouterView />
+  <v-app>
+    <v-main>
+      <v-container>
+        <RouterView />
+      </v-container>
+    </v-main>
+  </v-app>  
 </template>
 
 <style scoped>
